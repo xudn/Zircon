@@ -123,8 +123,6 @@ namespace Library.Network.ClientPackets
     {
         public MirDirection Direction { get; set; }
         public uint Target { get; set; }
-        public int DelayedTime { get; set; }
-
     }
     public sealed class Mining : Packet
     {
@@ -348,7 +346,25 @@ namespace Library.Network.ClientPackets
 
     public sealed class GroupResponse : Packet
     {
+        public string Name { get; set; }
         public bool Accept { get; set; }
+    }
+    public sealed class GroupRequest : Packet
+    {
+        public string Name { get; set; }
+    }
+
+    public sealed class GroupLFGUpdate : Packet
+    {
+        public bool Enabled { get; set; }
+        public string Name { get; set; }
+        public string Type { get; set; }
+        public int MaxCount { get; set; }
+    }
+
+    public sealed class GroupNotify : Packet
+    {
+        public bool Receive { get; set; }
     }
 
     public sealed class Inspect : Packet

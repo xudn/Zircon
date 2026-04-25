@@ -65,7 +65,6 @@ namespace Library
             MinRealNameLength = 3,
             MaxRealNameLength = 20,
 
-
             MinCaptionLength = 3,
             MaxCaptionLength = 25,
 
@@ -92,6 +91,7 @@ namespace Library
             DuraLossRate = 15,
 
             GroupLimit = 15,
+            LookingForGroupMinutes = 60,
 
             MaxGrowthLevel = 3,
 
@@ -1178,6 +1178,19 @@ namespace Library
         {
             ItemInfo = Globals.ItemInfoList.Binding.FirstOrDefault(x => x.Index == ItemIndex);
         }
+    }
+
+    public class ClientLookingForGroup
+    {
+        public string LeaderName { get; set; }
+        public string GroupName { get; set; }
+        public string GroupType { get; set; }
+
+        [IgnorePropertyPacket]
+        public int CurrentCount => MemberInfo.Count;
+        public List<string> MemberInfo { get; set; } = new List<string>();
+        public int MaxCount { get; set; }
+        public bool Enabled { get; set; }
     }
 }
 
